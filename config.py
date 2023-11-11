@@ -13,6 +13,13 @@ OWNER = int(os.environ.get("OWNER", 6523256745))
 LOG = -1002122751557
 
 try:
+  GROUPS =[]
+  for x in (os.environ.get('GROUPS', '-1002122751557').split())
+    GROUPS.append(int(x))
+except ValueError:
+    raise Exception("Your AUTH GROUPS list does not contain valid integers.")    
+
+try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "809150135").split()):
         ADMINS.append(int(x))
