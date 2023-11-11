@@ -158,7 +158,7 @@ async def account_login(bot: Client, m: Message):
             if "-n" in v:
               name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", "")
             else:
-              name_x=str(i+1).zfill(3)
+              name_x=str(count).zfill(3)
             
             if b_name:
               name=b_name+name_x
