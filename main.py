@@ -151,9 +151,9 @@ async def account_login(bot: Client, m: Message):
     try:
         for i in range(count - 1, len(links)):
 
-            v = links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
-            #url = "https://" + V
-            urls=pat.findall(v)
+            v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
+            url = "https://" + V
+            '''urls=pat.findall(v)
             url=urls[0]
             if "-n" in v:
               name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", "")
@@ -163,7 +163,7 @@ async def account_login(bot: Client, m: Message):
             if b_name:
               name=b_name+name_x
             else:
-              name=name_x
+              name=name_x'''
               
             if "visionias" in url:
                 async with ClientSession() as session:
