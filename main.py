@@ -163,7 +163,7 @@ async def account_login(bot: Client, m: Message):
             if b_name:
               name=b_name+name_x
             else:
-              name=b_name+name_x
+              name=name_x
               
             if "visionias" in url:
                 async with ClientSession() as session:
