@@ -94,7 +94,7 @@ async def account_login(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    if raw_text0 == 'd':
+    if raw_text0.startswith('/skip'):
         b_name = None
     else:
         b_name = raw_text0
