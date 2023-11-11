@@ -1,6 +1,6 @@
 from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 import requests
-import json
+import json, re
 import subprocess
 from pyrogram import Client, filters
 from pyrogram.types.messages_and_media import message
@@ -21,6 +21,9 @@ from config import *
 import sys
 import re
 import os
+
+
+pat =  re.compile(r"(https?://+[\w\d:#@%/;$()~_?\+-=\\\.&]*)")
 
 bot = Client("bot",
              bot_token= "6860427344:AAHvMP_VjrsCF4rbZzC4GtOw5aZ0jVddAHI",
@@ -59,7 +62,11 @@ async def account_login(bot: Client, m: Message):
             content = content.split("\n")
             links = []
             for i in content:
-                links.append(i.split("://", 1))
+                urls=pat.findall(i)
+                if len(urls)==0:
+                  pass 
+                else:
+                  links.append(i)
             os.remove(x)
             # print(len(links)
         except:
@@ -71,7 +78,12 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-            links.append(i.split("://", 1))
+          urls=pat.findall(i)
+          if len(urls)==0:
+            pass 
+          else:
+            links.append(i)
+          #links.append(i.split("://", 1))
    
     await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input0: Message = await bot.listen(editable.chat.id)
