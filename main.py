@@ -125,7 +125,7 @@ async def account_login(bot: Client, m: Message):
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    if raw_text3 == '/skip':
+    if raw_text3.startswith('/skip'):
         CR = credit
     else:
         CR = raw_text3
