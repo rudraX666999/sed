@@ -158,7 +158,7 @@ async def account_login(bot: Client, m: Message):
             if "-n" in v:
               name = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", "")
             else:
-              name=str(count)
+              name=str(i+1).zfill(3)
               
             if "visionias" in url:
                 async with ClientSession() as session:
