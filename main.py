@@ -152,7 +152,8 @@ async def account_login(bot: Client, m: Message):
         for i in range(count - 1, len(links)):
 
             v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
-            url = "https://" + V
+            await m.reply(f"V ==> `{v}`")
+            url = "https://" + v
             '''urls=pat.findall(v)
             url=urls[0]
             if "-n" in v:
