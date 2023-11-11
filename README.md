@@ -1,6 +1,6 @@
 # txt uploader
 
-# MADE BY MR. INVISIBLE
+
 
 
 ## DEPLOY TO HEROKU
