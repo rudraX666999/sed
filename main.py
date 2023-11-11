@@ -238,3 +238,4 @@ async def account_login(bot: Client, m: Message):
 
 
 bot.run()
+print("started")
