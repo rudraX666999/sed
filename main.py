@@ -153,10 +153,12 @@ async def account_login(bot: Client, m: Message):
 
             v = links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
             #url = "https://" + V
-            if "-n" in links[i]:
-              url=v.split("-n")[0].strip()
+            urls=pat.findall(v)
+            url=urls[0]
+            if "-n" in v:
               name = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", "")
             else:
+              name=str(count)
               
             if "visionias" in url:
                 async with ClientSession() as session:
