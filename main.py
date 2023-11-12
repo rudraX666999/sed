@@ -62,11 +62,12 @@ async def account_login(bot: Client, m: Message):
             content = content.split("\n")
             links = []
             for i in content:
-                urls=pat.findall(i)
+                links.append(i.split("://", 1))
+                '''urls=pat.findall(i)
                 if len(urls)==0:
                   pass 
                 else:
-                  links.append(i)
+                  links.append(i)'''
             os.remove(x)
             # print(len(links)
         except:
@@ -78,12 +79,12 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-          urls=pat.findall(i)
+          '''urls=pat.findall(i)
           if len(urls)==0:
             pass 
           else:
-            links.append(i)
-          #links.append(i.split("://", 1))
+            links.append(i)'''
+          links.append(i.split("://", 1))
    
     await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input0: Message = await bot.listen(editable.chat.id)
@@ -150,7 +151,7 @@ async def account_login(bot: Client, m: Message):
 
     try:
         for i in range(count - 1, len(links)):
-
+            await m.reply(f"Link ==> {links[i]}")
             v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
             await m.reply(f"V ==> `{v}`")
             url = "https://" + v
