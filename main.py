@@ -142,7 +142,7 @@ async def account_login(bot: Client, m: Message):
         getstatusoutput(f"wget '{thumb_x}' -O 'thumb.jpg'")
         thumb = "thumb.jpg"
     else:
-        thumb == "no"
+        thumb = "no"
 
     if len(links) == 1:
         count = 1
