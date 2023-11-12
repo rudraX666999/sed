@@ -130,6 +130,8 @@ async def account_login(bot: Client, m: Message):
     await input3.delete(True)
     if raw_text3.startswith('/skip'):
         CR = credit
+    elif raw_text3.startswith('/stop'):
+      return await m.reply("**STOPPED**")
     else:
         CR = raw_text3
 
@@ -143,6 +145,8 @@ async def account_login(bot: Client, m: Message):
     if thumb_x.startswith("http://") or thumb_x.startswith("https://"):
         getstatusoutput(f"wget '{thumb_x}' -O 'thumb.jpg'")
         thumb = "thumb.jpg"
+    elif thumb_x.startswith('/stop'):
+      return await m.reply("**STOPPED**")
     else:
         thumb = "no"
 
