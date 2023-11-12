@@ -159,7 +159,7 @@ async def account_login(bot: Client, m: Message):
             urls=pat.findall(v)
             url=urls[0]
             if "-n" in v:
-              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ")
+              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_")
             else:
               name_x=str(i+1).zfill(3)
             
@@ -234,7 +234,7 @@ async def account_login(bot: Client, m: Message):
                     count += 1
 
             except Exception as e:
-                await m.reply_text(f"**⭕ This #Failed File is not Counted**\n**Name** =>> `{name}`\n**Link** =>> `{url}`\n\n ** fail reason »** {e}")
+                await m.reply_text(f"**This #Failed File is not Counted**\n**Name** =>> `{name}`\n**Link** =>> `{url}`\n\n ** fail reason »** {e}")
                 count += 1
                 continue
 
