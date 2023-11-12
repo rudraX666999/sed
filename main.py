@@ -97,6 +97,8 @@ async def account_login(bot: Client, m: Message):
     await input1.delete(True)
     if raw_text0.startswith('/skip'):
         b_name = None
+    elif raw_text0.startswith('/stop'):
+      return await m.reply("**STOPPED**")
     else:
         b_name = raw_text0
 
