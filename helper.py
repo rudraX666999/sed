@@ -139,8 +139,11 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name):
         copy = await bot.send_video(chat_id=m.chat.id,video=filename,caption=cc, supports_streaming=True,height=720,width=1280,thumb=thumbnail,duration=dur) #progress=progress_bar,progress_args=(reply,start_time))
         await rep.delete()
         await copy.copy(chat_id = LOG)
-
-
+    
+    try:
+      await rep.delete()
+    except:
+      pass
     os.remove(filename)
 
     os.remove(f"{filename}.jpg")
