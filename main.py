@@ -137,9 +137,9 @@ async def account_login(bot: Client, m: Message):
     await input6.delete(True)
     await editable.delete()
 
-    thumb = input6.text
-    if thumb.startswith("http://") or thumb.startswith("https://"):
-        getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
+    thumb_x = input6.text
+    if thumb_x.startswith("http://") or thumb_x.startswith("https://"):
+        getstatusoutput(f"wget '{thumb_x}' -O 'thumb.jpg'")
         thumb = "thumb.jpg"
     else:
         thumb == "no"
