@@ -62,12 +62,12 @@ async def account_login(bot: Client, m: Message):
             content = content.split("\n")
             links = []
             for i in content:
-                links.append(i.split("://", 1))
-                '''urls=pat.findall(i)
+                #links.append(i.split("://", 1))
+                urls=pat.findall(i)
                 if len(urls)==0:
                   pass 
                 else:
-                  links.append(i)'''
+                  links.append(i)
             os.remove(x)
             # print(len(links)
         except:
@@ -79,12 +79,12 @@ async def account_login(bot: Client, m: Message):
         content = content.split("\n")
         links = []
         for i in content:
-          '''urls=pat.findall(i)
+          urls=pat.findall(i)
           if len(urls)==0:
             pass 
           else:
-            links.append(i)'''
-          links.append(i.split("://", 1))
+            links.append(i)
+          #links.append(i.split("://", 1))
    
     await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input0: Message = await bot.listen(editable.chat.id)
@@ -151,21 +151,22 @@ async def account_login(bot: Client, m: Message):
 
     try:
         for i in range(count - 1, len(links)):
-            await m.reply(f"Link ==> {links[i]}")
-            v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
-            await m.reply(f"V ==> `{v}`")
-            url = "https://" + v
-            '''urls=pat.findall(v)
+            #await m.reply(f"Link ==> {links[i]}")
+            #v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
+            #await m.reply(f"V ==> `{v}`")
+            #url = "https://" + v
+            v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
+            urls=pat.findall(v)
             url=urls[0]
             if "-n" in v:
-              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", "")
+              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ")
             else:
-              name_x=str(count).zfill(3)
+              name_x=str(i+1).zfill(3)
             
             if b_name:
               name=b_name+name_x
             else:
-              name=name_x'''
+              name=name_x
               
             if "visionias" in url:
                 async with ClientSession() as session:
@@ -180,9 +181,9 @@ async def account_login(bot: Client, m: Message):
              id =  url.split("/")[-2]
              url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
 
-            name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
-            name = f'{str(count).zfill(3)}) {name1[:60]}'
-            await m.reply(f"name1 ==> `{name1}`\n\nname ==> `{name}")
+            #name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
+            #name = f'{str(count).zfill(3)}) {name1[:60]}'
+            #await m.reply(f"name1 ==> `{name1}`\n\nname ==> `{name}")
 
             if "youtu" in url:
                 ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
@@ -195,10 +196,10 @@ async def account_login(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:          
-                cc = f'** {str(count).zfill(3)}.** {name1} ({res}) .mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
-                cc1 = f'** {str(count).zfill(3)}.** {name1} .pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
-                #cc = f'** {name_x}**.mkv\n\n**Downloaded by : {CR}**'
-                #cc1 = f'** {name_x}**.pdf \n\n**Downloaded by : {CR}**'
+                #cc = f'** {str(count).zfill(3)}.** {name1} ({res}) .mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
+                #cc1 = f'** {str(count).zfill(3)}.** {name1} .pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
+                cc = f'** {name_x}**.mkv\n\n**Downloaded by : {CR}**'
+                cc1 = f'** {name_x}**.pdf \n\n**Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
