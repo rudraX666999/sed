@@ -113,7 +113,7 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name):
         f'ffmpeg -i "{filename}" -ss 00:01:00 -vframes 1 "{filename}.jpg"',
         shell=True)
    # await prog.delete(True)
-    reply = await m.reply_text(f"**Uploading ...** - `{name}`\n\nFile Name ==> `{filename}`")
+    rep = await m.reply_text(f"**Uploading ...** - `{filename}`")
     try:
         if thumb == "no":
             thumbnail = f"{filename}.jpg"
@@ -128,6 +128,7 @@ async def send_vid(bot: Client, m: Message, cc, filename, thumb, name):
 
     try:
         copy = await bot.send_video(chat_id=m.chat.id,video=filename,caption=cc, supports_streaming=True,height=720,width=1280,thumb=thumbnail,duration=dur) #, progress=progress_bar,progress_args=(reply,start_time))
+        await rep.delete()
         await copy.copy(chat_id = LOG) 
     except TimeoutError:
         await asyncio.sleep(5) 
