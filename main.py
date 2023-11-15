@@ -26,7 +26,7 @@ import os
 pat =  re.compile(r"(https?://+[\w\d:#@%/;$()~_?\+-=\\\.&]*)")
 
 bot = Client("bot",
-             bot_token= "6860427344:AAHvMP_VjrsCF4rbZzC4GtOw5aZ0jVddAHI",
+             bot_token= "6669926453:AAEZc_j2UETA96mOgXTCWCmoi4RMfcdoycg",
              api_id= 9741228,
              api_hash= "6f339e8fa827a5147fa2ff03898d610c")
 
