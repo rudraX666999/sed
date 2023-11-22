@@ -165,7 +165,7 @@ async def account_login(bot: Client, m: Message):
             urls=pat.findall(v)
             url=urls[0]
             if "-n" in v:
-              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_")
+              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             else:
               name_x=str(i+1).zfill(3)
             
@@ -204,8 +204,8 @@ async def account_login(bot: Client, m: Message):
             try:          
                 #cc = f'** {str(count).zfill(3)}.** {name1} ({res}) .mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
                 #cc1 = f'** {str(count).zfill(3)}.** {name1} .pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
-                cc = f'** {name_x.replace("_", " ")}**.mkv\n\n**Downloaded by : {CR}**'
-                cc1 = f'** {name_x}**.pdf \n\n**Downloaded by : {CR}**'
+                cc = f'** {name_x.replace("_", " ")}**\n\n**Downloaded by : {CR}**'
+                cc1 = f'** {name_x}**\n\n**Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
