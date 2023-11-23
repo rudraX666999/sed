@@ -164,13 +164,15 @@ async def account_login(bot: Client, m: Message):
             v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
             urls=pat.findall(v)
             url=urls[0]
-            name_match = re.search(r'-n\s(.*?)\s', text)
-            date_match = re.search(r'-d\s(.*?)\s', text)
-            subject_match = re.search(r'-s\s(.*?)\s', text)
+            name_match = re.search(r'-n\s(.*?)\s', v)
+            date_match = re.search(r'-d\s(.*?)\s', v)
+            subject_match = re.search(r'-s\s(.*?)\s', v)
+            teacher_match = re.search(r'-t\s(.*?)\s', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             date = date_match.group(1) if date_match else None
             subject = subject_match.group(1) if subject_match else None
+            teacher = teacher_match.group(1) if teacher_match else None
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             if b_name:
               name=b_name+name_x
@@ -208,10 +210,12 @@ async def account_login(bot: Client, m: Message):
                 #cc = f'** {str(count).zfill(3)}.** {name1} ({res}) .mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
                 #cc1 = f'** {str(count).zfill(3)}.** {name1} .pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
                 cc = f'** {name_x.replace("_", " ")}**'
-                if subject:
-                  cc+=f"\n**SUBJECT »»** {subject}"
+                if teacher:
+                  cc+=f"\n**SIR »»** {teacher.strip()}"
                 if date:
-                  cc+=f"\n**DATE »»* {date}"
+                  cc+=f"\n**DATE »»* {date.strip()}"
+                if subject:
+                  cc+=f"\n**SUBJECT »»** {subject.strip()}"
                 cc+='\n\n**🔰 Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
