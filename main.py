@@ -164,11 +164,14 @@ async def account_login(bot: Client, m: Message):
             v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
             urls=pat.findall(v)
             url=urls[0]
-            if "-n" in v:
-              name_x = v.split("-n")[1].strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
-            else:
-              name_x=str(i+1).zfill(3)
+            name_match = re.search(r'-n\s(.*?)\s', text)
+            date_match = re.search(r'-d\s(.*?)\s', text)
+            subject_match = re.search(r'-s\s(.*?)\s', text)
             
+            name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
+            date = date_match.group(1) if date_match else None
+            subject = subject_match.group(1) if subject_match else None
+            name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             if b_name:
               name=b_name+name_x
             else:
