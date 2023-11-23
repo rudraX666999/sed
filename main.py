@@ -211,7 +211,7 @@ async def account_login(bot: Client, m: Message):
                 #cc1 = f'** {str(count).zfill(3)}.** {name1} .pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
                 cc = f'** {name_x.replace("_", " ")}**'
                 if teacher:
-                  cc+=f"\nSIR »» **{teacher.strip()}**"
+                  cc+=f"\n👤 SIR »» **{teacher.strip()}**"
                 if date:
                   cc+=f"\n**DATE »»* {date.strip()}"
                 if subject:
