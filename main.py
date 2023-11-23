@@ -207,7 +207,12 @@ async def account_login(bot: Client, m: Message):
             try:          
                 #cc = f'** {str(count).zfill(3)}.** {name1} ({res}) .mkv\n**Batch Name :** {b_name}\n\n**Downloaded by : {CR}**'
                 #cc1 = f'** {str(count).zfill(3)}.** {name1} .pdf \n**Batch Name :**{b_name}\n\n**Downloaded by : {CR}**'
-                cc = f'** {name_x.replace("_", " ")}**\n\n**Downloaded by : {CR}**'
+                cc = f'** {name_x.replace("_", " ")}**'
+                if subject:
+                  cc+=f"\n**SUBJECT »»** {subject}"
+                if date:
+                  cc+=f"\n**DATE »»* {date}"
+                cc+='\n\n**Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
