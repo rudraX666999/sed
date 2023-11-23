@@ -213,7 +213,7 @@ async def account_login(bot: Client, m: Message):
                 if teacher:
                   cc+=f"\n👤 SIR »» **{teacher.strip()}**"
                 if date:
-                  cc+=f"\n**DATE »»* {date.strip()}"
+                  cc+=f"\n**DATE »»** {date.strip()}"
                 if subject:
                   cc+=f"\n**SUBJECT »»** {subject.strip()}"
                 cc+='\n\n**🔰 Downloaded by : {CR}**'
