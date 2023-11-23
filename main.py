@@ -167,7 +167,7 @@ async def account_login(bot: Client, m: Message):
             name_match = re.search(r'-n\s(.*?)(?=\s(-d|-s|-t)|$)', v)
             date_match = re.search(r'-d\s(.*?)(?=\s(-n|-s|-t)|$)', v)
             subject_match = re.search(r'-s\s(.*?)(?=\s(-n|-d|-t)|$)', v)
-            teacher_match = re.search(r'-t\s(.+)', v)
+            teacher_match = re.search(r'-t\s(.*?)(?=\s(-d|-s|-n)|$)', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             date = date_match.group(1) if date_match else None
