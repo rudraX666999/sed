@@ -216,7 +216,7 @@ async def account_login(bot: Client, m: Message):
                   cc+=f"\n**DATE »»** {date.strip()}"
                 if subject:
                   cc+=f"\n**SUBJECT »»** {subject.strip()}"
-                cc+='\n\n**🔰 Downloaded by : {CR}**'
+                cc+=f'\n\n**🔰 Downloaded by : {CR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
