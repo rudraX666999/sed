@@ -108,11 +108,15 @@ async def download_video(url, cmd, name):
 
 
 async def send_vid(bot: Client, m: Message, cc, filename, thumb, name):
-
+    #await prog.delete(True)
+    if os.path.isfile(filename):
+      filename=filename
+    else:
+      filename=f"{filename}.mp4"
     subprocess.run(
         f'ffmpeg -i "{filename}" -ss 00:01:00 -vframes 1 "{filename}.jpg"',
         shell=True)
-   # await prog.delete(True)
+    #await prog.delete(True)
     rep = await m.reply_text(f"**♻️ Uploading ...**\n\n🥀 FileName »»  `{filename}`")
     try:
         if thumb == "no":
