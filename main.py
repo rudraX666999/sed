@@ -198,7 +198,7 @@ async def account_login(bot: Client, m: Message):
                 v=list(filter(lambda x:"hls-fastly_skyfire_sep" in x["format_id"], v))[0]
                 u=v["manifest_url"]
                 url=u.split("video/")[1].split("/")[0]
-                url=u.replace(r, r.split(",")[-2])
+                url=u.replace(url, url.split(",")[-2])
             elif '/master.mpd' in url:
              id =  url.split("/")[-2]
              url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
