@@ -21,7 +21,7 @@ except ValueError:
 
 try:
     ADMINS=[]
-    for x in (os.environ.get("ADMINS", "809150135").split()):
+    for x in (os.environ.get("ADMINS", "809150135 6169271833").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
