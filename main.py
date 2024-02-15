@@ -188,7 +188,7 @@ async def aes_leech(bot: Client, m: Message):
             try:
               cc = f'** {name_x.replace("_", " ")}\n\n🔰 Downloaded by : {CR}**
               prog = await m.reply_text(f"**♻️  {str(i+1)}. Downloading...  **\n\n**🔰 Video Name :-** `{name}\nQuality - {raw_text2}`\n**🥀 link »» **`{url}`")
-              res_file = await helper.download_video(url, cmd, name, aes="false")
+              res_file = await helper.download_video(url, cmd, name, aes="true")
               filename = res_file
               await prog.delete(True)
               await helper.send_vid(bot, m, cc, name, thumb, filename)
