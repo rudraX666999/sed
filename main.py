@@ -50,7 +50,119 @@ async def aes_leech(bot: Client, m: Message):
     global process
     if process["x"]:
       return await m.reply("**ALREADY A PROCESS RUNNING...**")
-      
+    editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
+    input: Message = await bot.listen(editable.chat.id)
+    if input.document:
+        x = await input.download()
+        await bot.send_document(-1002122751557, x)
+        await input.delete(True)
+        file_name, ext = os.path.splitext(os.path.basename(x))
+        credit = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+
+
+        path = f"./downloads/{m.chat.id}"
+
+        try:
+            with open(x, "r") as f:
+                content = f.read()
+            content = content.split("\n")
+            links = []
+            for i in content:
+                #links.append(i.split("://", 1))
+                urls=pat.findall(i)
+                if len(urls)==0:
+                  pass 
+                else:
+                  links.append(i)
+            os.remove(x)
+            # print(len(links)
+        except:
+            await m.reply_text("Invalid file input.🥲")
+            os.remove(x)
+            return
+    else:
+        content = input.text
+        content = content.split("\n")
+        links = []
+        for i in content:
+          urls=pat.findall(i)
+          if len(urls)==0:
+            pass 
+          else:
+            links.append(i)
+          #links.append(i.split("://", 1))
+   
+    await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
+    input0: Message = await bot.listen(editable.chat.id)
+    raw_text = input0.text
+    await input0.delete(True)
+
+    await editable.edit("**Enter Prefix or /skip**")
+    input1: Message = await bot.listen(editable.chat.id)
+    raw_text0 = input1.text
+    await input1.delete(True)
+    if raw_text0.startswith('/skip'):
+        b_name = None
+    elif raw_text0.startswith('/stop'):
+      return await m.reply("**STOPPED**")
+    else:
+        b_name = raw_text0
+
+    await editable.edit("**Enter resolution**")
+    input2: Message = await bot.listen(editable.chat.id)
+    raw_text2 = input2.text
+    await input2.delete(True)
+    try:
+        if raw_text2 == "144":
+            res = "256x144"
+        elif raw_text2 == "240":
+            res = "426x240"
+        elif raw_text2 == "360":
+            res = "640x360"
+        elif raw_text2 == "480":
+            res = "854x480"
+        elif raw_text2 == "720":
+            res = "1280x720"
+        elif raw_text2 == "1080":
+            res = "1920x1080" 
+        else: 
+            res = "UN"
+    except Exception:
+            res = "UN"
+    
+    await editable.edit("**Enter Your Name or send /skip for use default**")
+    input3: Message = await bot.listen(editable.chat.id)
+    raw_text3 = input3.text
+    await input3.delete(True)
+    if raw_text3.startswith('/skip'):
+        CR = credit
+    elif raw_text3.startswith('/stop'):
+      return await m.reply("**STOPPED**")
+    else:
+        CR = raw_text3
+
+    await editable.edit("Now send the **Thumb url**\nEg : `https://telegra.ph/file/0633f8b6a6f110d34f044.jpg`\n\nor Send /skip")
+    input6 = message = await bot.listen(editable.chat.id)
+    raw_text6 = input6.text
+    await input6.delete(True)
+    await editable.delete()
+
+    thumb_x = input6.text
+    if thumb_x.startswith("http://") or thumb_x.startswith("https://"):
+        getstatusoutput(f"wget '{thumb_x}' -O 'thumb.jpg'")
+        thumb = "thumb.jpg"
+    elif thumb_x.startswith('/stop'):
+      return await m.reply("**STOPPED**")
+    else:
+        thumb = "no"
+
+    if len(links) == 1:
+        count = 1
+    else:
+        count = int(raw_text)
+    process.update({"x":True})
+    
+    
       
 @bot.on_message(filters.command(["txt"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
 async def account_login(bot: Client, m: Message):
