@@ -186,7 +186,7 @@ async def aes_leech(bot: Client, m: Message):
               cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" "{url}" -M mp4 --save-name "{name}"'
               
             try:
-              cc = f'** {name_x.replace("_", " ")}\n\n🔰 Downloaded by : {CR}**
+              cc = f'** {name_x.replace("_", " ")}\n\n🔰 Downloaded by : {CR}**'
               prog = await m.reply_text(f"**♻️  {str(i+1)}. Downloading...  **\n\n**🔰 Video Name :-** `{name}\nQuality - {raw_text2}`\n**🥀 link »» **`{url}`")
               res_file = await helper.download_video(url, cmd, name, aes="true")
               filename = res_file
