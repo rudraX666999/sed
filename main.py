@@ -46,7 +46,12 @@ async def restart_handler(_, m):
     
 
 @bot.on_message(filters.command(["aes"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
-
+async def aes_leech(bot: Client, m: Message):
+    global process
+    if process["x"]:
+      return await m.reply("**ALREADY A PROCESS RUNNING...**")
+      
+      
 @bot.on_message(filters.command(["txt"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
 async def account_login(bot: Client, m: Message):
     global process
