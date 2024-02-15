@@ -166,15 +166,11 @@ async def aes_leech(bot: Client, m: Message):
             v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
             urls=pat.findall(v)
             url=urls[0]
-            name_match = re.search(r'-n\s(.*?)(?=\s(-d|-s|-t)|$)', v)
-            date_match = re.search(r'-d\s(.*?)(?=\s(-n|-s|-t)|$)', v)
-            subject_match = re.search(r'-s\s(.*?)(?=\s(-n|-d|-t)|$)', v)
-            teacher_match = re.search(r'-t\s(.*?)(?=\s(-d|-s|-n)|$)', v)
+            name_match = re.search(r'-n\s(.*?)(?=\s(-key|-iv)|$)', v)
+            key_match = re.search(r'-key\s(.*?)(?=\s(-n|-iv)|$)', v)
+            iv_match = re.search(r'-iv\s(.*?)(?=\s(-n|-key)|$)', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
-            date = date_match.group(1) if date_match else None
-            subject = subject_match.group(1) if subject_match else None
-            teacher = teacher_match.group(1) if teacher_match else None
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             if b_name:
               name=b_name+name_x
