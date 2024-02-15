@@ -192,7 +192,7 @@ async def aes_leech(bot: Client, m: Message):
               filename = res_file
               await prog.delete(True)
               await helper.send_vid(bot, m, cc, name, thumb, filename)
-                    count += 1
+              count += 1
 
             except Exception as e:
               await m.reply_text(f"**This #Failed File is not Counted**\n**Name** =>> `{name}`\n**Link** =>> `{url}`\n\n ** fail reason »** {e}")
