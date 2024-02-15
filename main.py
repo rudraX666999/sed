@@ -181,9 +181,9 @@ async def aes_leech(bot: Client, m: Message):
             else:
               name=name_x
             if iv: 
-              cmd=f'././N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" "https://dnqe0v482iyb1.cloudfront.net/spees/w/o/5d05d775e4b04ce9e98e9136/v/648e1a29e4b03ce3ae9ff94f/u/65cb869ae4b0353abece115a/t/dd9c94d8130c5e238901096bed1ea3c4/p/assets/videos/5d05d775e4b04ce9e98e9136/2023/06/17/648e1a29e4b03ce3ae9ff94f/hls_500k_.m3u8" -M mp4 --save-name ""'
+              cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" --custom-hls-iv {iv} "{url}" -M mp4 --save-name "{name}"'
             else:
-              
+              cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" "{url}" -M mp4 --save-name "{name}"'
       
     
       
