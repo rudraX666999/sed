@@ -162,7 +162,7 @@ async def account_login(bot: Client, m: Message):
         count = 1
     else:
         count = int(raw_text)
-
+    process.update({"x":True})
     try:
         for i in range(count - 1, len(links)):
             #await m.reply(f"Link ==> {links[i]}")
