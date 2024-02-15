@@ -22,6 +22,7 @@ import sys
 import re
 import os
 
+process={"x":False}
 
 pat =  re.compile(r"(https?://+[\w\d:#@%/;$()~_?\+-=\\\.&]*)")
 
@@ -38,13 +39,19 @@ async def account_login(bot: Client, m: Message):
 
 @bot.on_message(filters.command("stop") & (filters.chat(GROUPS) | filters.chat(ADMINS)))
 async def restart_handler(_, m):
+    global process
     await m.reply_text("**STOPPED**🛑🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
+    process.update({"x":False})
+    
 
 @bot.on_message(filters.command(["aes"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
 
 @bot.on_message(filters.command(["txt"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
 async def account_login(bot: Client, m: Message):
+    global process
+    if process["x"]:
+      return await m.reply("**ALREADY A PROCESS RUNNING...**")
     editable = await m.reply_text(f"**Hey [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nSend txt file**")
     input: Message = await bot.listen(editable.chat.id)
     if input.document:
