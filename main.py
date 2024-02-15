@@ -171,8 +171,8 @@ async def aes_leech(bot: Client, m: Message):
             iv_match = re.search(r'-iv\s(.*?)(?=\s(-n|-key)|$)', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
-            key = key_match.group(1) if date_match else None
-            iv = iv_match.group(1) if subject_match else None
+            key = key_match.group(1) if key_match else None
+            iv = iv_match.group(1) if iv_match else None
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
