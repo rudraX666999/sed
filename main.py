@@ -161,7 +161,30 @@ async def aes_leech(bot: Client, m: Message):
     else:
         count = int(raw_text)
     process.update({"x":True})
-    
+    try:
+        for i in range(count - 1, len(links)):
+            #await m.reply(f"Link ==> {links[i]}")
+            #v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
+            #await m.reply(f"V ==> `{v}`")
+            #url = "https://" + v
+            v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
+            urls=pat.findall(v)
+            url=urls[0]
+            name_match = re.search(r'-n\s(.*?)(?=\s(-d|-s|-t)|$)', v)
+            date_match = re.search(r'-d\s(.*?)(?=\s(-n|-s|-t)|$)', v)
+            subject_match = re.search(r'-s\s(.*?)(?=\s(-n|-d|-t)|$)', v)
+            teacher_match = re.search(r'-t\s(.*?)(?=\s(-d|-s|-n)|$)', v)
+            
+            name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
+            date = date_match.group(1) if date_match else None
+            subject = subject_match.group(1) if subject_match else None
+            teacher = teacher_match.group(1) if teacher_match else None
+            name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
+            if b_name:
+              name=b_name+name_x
+            else:
+              name=name_x
+      
     
       
 @bot.on_message(filters.command(["txt"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
