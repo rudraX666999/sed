@@ -163,10 +163,6 @@ async def aes_leech(bot: Client, m: Message):
     process.update({"x":True})
     try:
         for i in range(count - 1, len(links)):
-            #await m.reply(f"Link ==> {links[i]}")
-            #v = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
-            #await m.reply(f"V ==> `{v}`")
-            #url = "https://" + v
             v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
             urls=pat.findall(v)
             url=urls[0]
