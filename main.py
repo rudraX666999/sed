@@ -171,11 +171,19 @@ async def aes_leech(bot: Client, m: Message):
             iv_match = re.search(r'-iv\s(.*?)(?=\s(-n|-key)|$)', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
+            key = key_match.group(1) if date_match else None
+            iv = iv_match.group(1) if subject_match else None
+            name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
+            name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             if b_name:
               name=b_name+name_x
             else:
               name=name_x
+            if iv: 
+              cmd=f'././N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" "https://dnqe0v482iyb1.cloudfront.net/spees/w/o/5d05d775e4b04ce9e98e9136/v/648e1a29e4b03ce3ae9ff94f/u/65cb869ae4b0353abece115a/t/dd9c94d8130c5e238901096bed1ea3c4/p/assets/videos/5d05d775e4b04ce9e98e9136/2023/06/17/648e1a29e4b03ce3ae9ff94f/hls_500k_.m3u8" -M mp4 --save-name ""'
+            else:
+              
       
     
       
