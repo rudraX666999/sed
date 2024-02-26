@@ -166,10 +166,10 @@ async def aes_leech(bot: Client, m: Message):
             v=links[i].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","")
             urls=pat.findall(v)
             url=urls[0]
-            name_match = re.search(r'-n\s(.*?)(?=\s(-key|-iv)|$)', v)
-            key_match = re.search(r'-key\s(.*?)(?=\s(-n|-iv)|$)', v)
-            extra_match = re.search(r'-extra\s(.*?)(?=\s(-n|-iv)|$)', v)
-            iv_match = re.search(r'-iv\s(.*?)(?=\s(-n|-key)|$)', v)
+            name_match = re.search(r'-n\s(.*?)(?=\s(-key|-iv|-extra)|$)', v)
+            key_match = re.search(r'-key\s(.*?)(?=\s(-n|-iv|-extra)|$)', v)
+            extra_match = re.search(r'-extra\s(.*?)(?=\s(-n|-iv|-key)|$)', v)
+            iv_match = re.search(r'-iv\s(.*?)(?=\s(-n|-key|-extra)|$)', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             key = key_match.group(1) if key_match else None
