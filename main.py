@@ -168,11 +168,14 @@ async def aes_leech(bot: Client, m: Message):
             url=urls[0]
             name_match = re.search(r'-n\s(.*?)(?=\s(-key|-iv)|$)', v)
             key_match = re.search(r'-key\s(.*?)(?=\s(-n|-iv)|$)', v)
+            extra_match = re.search(r'-extra\s(.*?)(?=\s(-n|-iv)|$)', v)
             iv_match = re.search(r'-iv\s(.*?)(?=\s(-n|-key)|$)', v)
             
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             key = key_match.group(1) if key_match else None
             iv = iv_match.group(1) if iv_match else None
+            extra = extra_match.group(1) if extra_match else None 
+            
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
             name_x = name_match.group(1) if name_match else str(i+1).zfill(3)
             name_x = name_x.strip().replace("\t", "").replace(":", "").replace("/", "").replace("+", " ").replace(".", "_").replace("\n", "_")
