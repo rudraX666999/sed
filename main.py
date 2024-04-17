@@ -184,19 +184,19 @@ async def aes_leech(bot: Client, m: Message):
             else:
               name=name_x
             if iv: 
-              cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" --custom-hls-iv {iv} "{url}" -M mp4 --save-name "{name}"'
+              cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" --custom-hls-iv {iv} "{url}" -M mp4 --save-name "{name_x}"'
             else:
-              cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" "{url}" -M mp4 --save-name "{name}"'
+              cmd=f'~/N_m3u8DL-RE_Beta_linux-x64/nm3u8 -H "Referer: https://www.neetphysicskota.com/" --custom-hls-key "{key}" "{url}" -M mp4 --save-name "{name_x}"'
             if extra:
               cmd+=f" {extra}"
               
             try:
               cc = f'** {name_x.replace("_", " ")}\n\n🔰 Downloaded by : {CR}**'
-              prog = await m.reply_text(f"**♻️  {str(i+1)}. Downloading...  **\n\n**🔰 Video Name :-** `{name}\nQuality - {raw_text2}`\n**🥀 link »» **`{url}`")
-              res_file = await helper.download_video(url, cmd, name, aes="true")
+              prog = await m.reply_text(f"**♻️  {str(i+1)}. Downloading...  **\n\n**🔰 Video Name :-** `{name_x}\nQuality - {raw_text2}`\n**🥀 link »» **`{url}`")
+              res_file = await helper.download_video(url, cmd, name_x, aes="true")
               filename = res_file
               await prog.delete(True)
-              await helper.send_vid(bot, m, cc, name, thumb, filename)
+              await helper.send_vid(bot, m, cc, name_x, thumb, filename)
               count += 1
 
             except Exception as e:
