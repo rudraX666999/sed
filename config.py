@@ -1,27 +1,27 @@
 import os
 
-API_ID = API_ID = 9741228
+API_ID = API_ID = 24932123
 
-API_HASH = os.environ.get("API_HASH", "6f339e8fa827a5147fa2ff03898d610c")
+API_HASH = os.environ.get("API_HASH", "112c5df5cf965ab22a7f8460a5026794")
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "6945617327:AAG835T-JGGHUR0HCPs_pshSuU5trtdk6rM")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "6923773907:AAGk99eIe-RkraiB_0497uIHZkXSjGIsy8E")
 
 PASS_DB = int(os.environ.get("PASS_DB", "721"))
 
-OWNER = int(os.environ.get("OWNER", 6523256745))
+OWNER = int(os.environ.get("OWNER", 6940485320))
 
-LOG = -1002122751557
+LOG = -1002087087781
 
 try:
   GROUPS =[]
-  for x in (os.environ.get('GROUPS', '-1002025716464 -1002116445692').split()):
+  for x in (os.environ.get('GROUPS', '-1002032524765').split()):
     GROUPS.append(int(x))
 except ValueError:
     raise Exception("Your AUTH GROUPS list does not contain valid integers.")    
 
 try:
     ADMINS=[]
-    for x in (os.environ.get("ADMINS", "809150135 6169271833").split()):
+    for x in (os.environ.get("ADMINS", "5570749629").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
