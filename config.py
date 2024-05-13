@@ -14,7 +14,7 @@ LOG = -1002087087781
 
 try:
   GROUPS =[]
-  for x in (os.environ.get('GROUPS', '-1002032524765').split()):
+  for x in (os.environ.get('GROUPS', '-1002032524765 -1002087087781').split()):
     GROUPS.append(int(x))
 except ValueError:
     raise Exception("Your AUTH GROUPS list does not contain valid integers.")    
