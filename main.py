@@ -28,8 +28,8 @@ pat =  re.compile(r"(https?://+[\w\d:#@%/;$()~_?\+-=\\\.&]*)")
 
 bot = Client("bot",
              bot_token= BOT_TOKEN,
-             api_id= 20959078,
-             api_hash= "b3dd1e7fa169aae46bb0d841519e1ab8")
+             api_id= 26484988,
+             api_hash= "8d6e625fe3e296b4b6bd4817aca39ec5")
 
 
 @bot.on_message(filters.command(["start"]) & (filters.chat(GROUPS) | filters.chat(ADMINS)))
